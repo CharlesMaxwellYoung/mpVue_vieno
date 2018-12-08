@@ -18,7 +18,12 @@ export function formatTime (date) {
   return `${t1} ${t2}`
 }
 
+function getIcon (iconName) {
+  return `/static/icons/${iconName}`
+}
+
 export default {
   formatNumber,
-  formatTime
+  formatTime,
+  getIcon
 }

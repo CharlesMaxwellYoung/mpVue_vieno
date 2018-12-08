@@ -1,6 +1,6 @@
 <template>
-  <div class="index container">
-    <bar></bar>
+  <div class="index">
+    <bar pageId="home"></bar>
   </div>
 </template>
 
@@ -11,7 +11,6 @@ import bar from "@/components/bar";
 export default {
   data() {
     return {
-      motto: "Hello World",
       userInfo: {}
     };
   },

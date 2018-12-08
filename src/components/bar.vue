@@ -1,46 +1,83 @@
 <template>
   <div class="bar">
     <ul class="bar__list">
-      <li class="bar__item" v-for="item in bars" :key="item">
-        <span class="item-text">{{item.name}}</span>
+      <li class="bar__item" v-for="item in bars" :key="item" @click="targetPage">
+        <img class="bar__img" :src="item.icon" :alt="item.id">
+        <span class="item-text" :class="{'active':pageId === item.id}">{{item.name}}</span>
       </li>
     </ul>
   </div>
 </template>
 <script>
-export default {
-  data() {
-    return {
-      bars: [
-        { name: "首页", id: "home", icon: "" },
-        { name: "直播", id: "live", icon: "" },
-        { name: "点播", id: "vod", icon: "" },
-        { name: "ME", id: "me", icon: "" }
-      ]
-    };
+
+  import utils from '@/utils'
+
+  const iconsMap = {
+    home: 'ios-star',
+    live: 'ios-tv',
+    vod: 'ios-film',
+    me: 'ios-person'
   }
-};
-</script>
-<style lang="scss" scoped>
-.bar {
-  width: 100%;
-  height: 100rpx;
-  background: rgba(0, 0, 0, 0.7);
-  position: fixed;
-  bottom: 0;
-  .bar__list {
-    display: flex;
-    justify-content: space-between;
-    .bar__item {
-      font-size: 20rpx;
-      width: 100%;
-      height: 100%;
-      line-height: 100rpx;
-      color: white;
-      text-align: center;
-      .item-text {
+  export default {
+    data () {
+      return {
+        bars: [
+          { name: '首页', id: 'home', icon: utils.getIcon(iconsMap['home'] + '.svg') },
+          { name: '直播', id: 'live', icon: utils.getIcon(iconsMap['live'] + '.svg') },
+          { name: '点播', id: 'vod', icon: utils.getIcon(iconsMap['vod'] + '.svg') },
+          { name: '我的', id: 'me', icon: utils.getIcon(iconsMap['me'] + '.svg') }
+        ]
+      }
+    },
+    props: ['pageId'],
+    created () {
+      if (this.pageId) {
+        this.bars.forEach((item) => {
+          if (item.id === this.pageId) {
+            item.icon = utils.getIcon(iconsMap[item.id] + '-active.svg')
+          }
+        })
+      }
+    },
+    methods: {
+      targetPage (e) {
+        console.log(e)
       }
     }
   }
-}
+</script>
+<style lang="scss" scoped>
+  @import "../../static/style/valid";
+
+  .bar {
+    width: 100%;
+    height: unit(46);
+    background: #222222;
+    position: fixed;
+    bottom: 0;
+    .bar__list {
+      display: flex;
+      justify-content: space-between;
+      margin-top: unit(5);
+      .bar__item {
+        width: 100%;
+        color: #959595;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .item-text {
+          font-size: unit(10);
+        }
+        .bar__img {
+          width: unit(25);
+          height: unit(25);
+        }
+      }
+    }
+  }
+
+  .active {
+    color: #00A0FC;
+  }
 </style>

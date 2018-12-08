@@ -8,13 +8,20 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      steps: "11"
-    };
+  import card from '@/components/card'
+  import bar from '@/components/bar'
+
+  export default {
+    components: {
+      card,
+      bar
+    },
+    data () {
+      return {
+        steps: '11'
+      }
+    }
   }
-};
 </script>
 
 <style scoped lang="scss">
