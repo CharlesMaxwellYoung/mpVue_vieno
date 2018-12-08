@@ -1,7 +1,7 @@
 <template>
   <div class="bar">
     <ul class="bar__list">
-      <li class="bar__item" v-for="item in bars" :key="item" @click="targetPage">
+      <li class="bar__item" v-for="(item,index) in bars" :key="index" @click="targetPage">
         <img class="bar__img" :src="item.icon" :alt="item.id">
         <span class="item-text" :class="{'active':pageId === item.id}">{{item.name}}</span>
       </li>
@@ -52,9 +52,10 @@
   .bar {
     width: 100%;
     height: unit(46);
-    background: #222222;
+    background-color: #222222;
     position: fixed;
     bottom: 0;
+    border-top: unit(1) solid #323232;
     .bar__list {
       display: flex;
       justify-content: space-between;

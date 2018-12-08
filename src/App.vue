@@ -10,6 +10,11 @@
 </script>
 
 <style lang="scss">
+
+  page {
+    background-color: #1C1C1C;
+  }
+
   @import "../static/style/valid";
 
   .container {
