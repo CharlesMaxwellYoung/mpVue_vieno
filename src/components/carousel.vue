@@ -32,8 +32,10 @@
   .carousel {
     width: 100%;
     height: unit(142);
+    margin-bottom: unit(20);
     .slide-image {
       width: 100%;
+      height: 100%;
     }
   }
 </style>

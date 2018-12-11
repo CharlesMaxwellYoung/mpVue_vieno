@@ -52,8 +52,9 @@
   .bar {
     width: 100%;
     height: unit(46);
-    background-color: #222222;
+    background-color: rgba(34,34,34,0.9);
     position: fixed;
+    z-index: 6;
     bottom: 0;
     border-top: unit(1) solid #323232;
     .bar__list {
